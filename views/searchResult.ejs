@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <container>
+        <div class="title">
+            Search Result
+        </div>
+
+    </container>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>private home</title>
+    <style>
+        div.container {
+            width:80%;
+            margin: 0px auto;
+            position: relative;
+
+        }
+        div.title{
+            width:80%;
+
+        }
+        img.title {
+            width:80%;
+            height:350px;
+            margin:10px;
+        }
+        div.left {
+            float:left;
+        }
+        div.right{
+            float:right;
+        }
+        div.post{
+            width:80%;
+            height:50px;
+            border-radius: 5px;
+            background-color: #cece97;
+            margin:10px;
+        }
+        div.page{
+            width:80%;
+        }
+        div.pagePointer{
+            width: 100px;
+            height:40px;
+            border-radius: 15px;
+            background-color: #507a79;
+        }
+        div.pBox{
+            /*margin:0px auto;*/
+        }
+        p{
+            font-size:15px;
+            color: #FFF;
+        }
+
+        input.search{
+            width: 200px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="titleImg">
+        <img src="/images/sample.png" class="title"/>
+        <div class="searchTab">
+            <input type="text" placeholder="search tag" class="search" />
+        </div>
+    </div>
+    <div class="showList">
+        <div class="results">
+            <%for(var i = 0; i< res.length;i++){%>
+            <!-- no의 값을 나중에는 id로 바꿔야 함 -->
+            <a href="/post/show/<%=res[i]._id%>">
+
+                <div class="post" no="<%=res[i]._id%>">
+                    <div class="postNum">
+                        <%= res[i].no%>
+                    </div>
+                    <div class="title"><%=res[i].title%></div>
+                    <div class="writer"><%=res[i].user%></div>
+                    <div class="date"><%=res[i].date%></div>
+                </div>
+            </a>
+            <%}%>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

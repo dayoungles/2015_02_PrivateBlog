@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>private home</title>
+    <style>
+        div.container {
+            width:80%;
+            margin: 0px auto;
+            position: relative;
+
+        }
+        div.title{
+            width:80%;
+
+        }
+        img.title {
+            width:80%;
+            height:350px;
+            margin:10px;
+        }
+        div.left {
+            float:left;
+        }
+        div.right{
+            float:right;
+        }
+        div.post{
+            width:80%;
+            height:50px;
+            border-radius: 5px;
+            background-color: #cece97;
+            margin:10px;
+        }
+        div.page{
+            width:80%;
+        }
+        div.pagePointer{
+            width: 100px;
+            height:40px;
+            border-radius: 15px;
+            background-color: #507a79;
+        }
+        div.pBox{
+            /*margin:0px auto;*/
+        }
+        p{
+            font-size:15px;
+            color: #FFF;
+        }
+
+        input.search{
+            width: 200px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="titleImg">
+            <img src="/images/sample.png" class="title"/>
+            <div class="searchTab">
+                <input type="text" placeholder="search tag" class="search" />
+            </div>
+        </div>
+        <div class="showList">
+            <% for(var i=0; i<posts.length; i++) {%>
+            <!-- TODO id를 조만간 no로 바꿀 것 -->
+            <a href="/post/show/<%=posts[i]._id%>">
+                <div class="post" postId=<%=posts[i]._id%>>
+                    <div class="postNum">
+                        <%= posts[i].no%>
+                    </div>
+                    <div class="title">
+                        title: <%= posts[i].title%>
+                    </div>
+                    <div class="writer">
+                        writer: <%= posts[i].user%>
+                    </div>
+                </div>
+            </a>
+            <% } %>
+
+        </div>
+
+        <div class="write><%=userName%></div>
+
+        <div class="page">
+            <div class="left pagePointer">
+                <div class="pBox">
+                    <p class="arrow">newer</p>
+                </div>
+            </div>
+
+            <div class="right pagePointer">
+                <div class="pBox">
+                    <p class="arrow">older</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="/users/logout"><button class="logout">logout</button></a>
+</body>
+</html>

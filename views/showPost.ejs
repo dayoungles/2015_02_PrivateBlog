@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        div.img{
+            display:inline-block;
+            width:80%;
+
+        }
+        img.title{
+            width:80%;
+            height:100px;
+        }
+        div.searchTab{
+            /*float:right;*/
+            width:200px;
+            height:50px;
+
+        }
+        input.search{
+            width: 200px;
+            border-radius: 10px;
+        }
+        div.contents{
+            border:2px solid grey;
+            background-color: #fffda9;
+            width:80%;
+            padding:40px;
+        }
+        div.titleBox{
+            position:relative;
+            width:100%;
+            height:100px;
+
+        }
+        div.titleBox p.title{
+            font-size:30px;
+            margin:10px;
+        }
+        div.titleBox p.date {
+            font-size: 15px;
+            float: right;
+            margin: 10px;
+        }
+        p.written {
+            font-size:20px;
+
+        }
+        span.tag{
+            font-size:15px;
+            color:dimgrey;
+
+        }
+        div.comment {
+            font-size:15px;
+            border:1px solid gray;
+            background-color: #cece97;
+            border-radius: 5px;
+            height:50px;
+
+        }
+        div.child{
+            background-color: pink;
+        }
+        div.comments{
+            border:1px solid grey;
+            width:80%;
+
+
+        }
+    </style>
+</head>
+<body>
+    <container>
+        <div class="upper">
+            <div class="img">
+                <img src="/images/postpage.png" class="title"/>
+            </div>
+            <div class="searchTab">
+                <input type="text" class="search" placeholder="search tag" />
+            </div>
+        </div>
+        <div class="under">
+            <div class="contents">
+                <div class="titleBox">
+                    <p class="title"><%=post.title%></p>
+                    <p class="date"><%=post.date%>></p>
+                </div>
+                <div class="content">
+                    <p class="written">
+                        <%=post.content%>
+                    </p>
+                </div>
+                <div class="tags">
+                    <%for(var i = 0; i< post.tag.length; i++){%>
+                        <span class="tag">#<%=post.tag[i]%></span>
+                    <%}%>
+                </div>
+            </div>
+        </div>
+        <div class="sendComment">
+            <!-- comment input box-->
+            <form method="post" action="/post/addComment">
+                <input type="userName" class="userName" placeholder="name" value="<%=userName%>"/>
+                <input type="text" class="commentBox" name="content" placeholder="comment"/>
+                <input type="hidden" name="post" value="<%=post._id%>"/>
+                <input type="submit" value="send comment"/>
+            </form>
+
+        </div>
+
+        <div class="comments">
+            <% for(var i =0; i< comments.length; i++){
+
+                if(comments[i].parent) continue;
+
+            %>
+
+                <div class="comment" id="<%=comments[i]._id%>">
+                    <span class="user"><%=comments[i].userName%></span>
+                    <span class="said"><%=comments[i].content%></span>
+                    <span class="commentDate"><%=comments[i].date%></span>
+
+                    <form method="post" action="/post/addComment">
+                        <input type="hidden" name="parent" value="<%=comments[i]._id%>"/>
+                        <input type="userName" class="userName" placeholder="name" value="<%=userName%>"/>
+                        <input type="text" class="commentBox" name="content" placeholder="comment"/>
+                        <input type="hidden" name="post" value="<%=post._id%>"/>
+                        <input type="submit" value="send comment"/>
+                    </form>
+
+<!--populate로 해결이 가능한 문제인가? 아니 그걸 떠나서 이 방법이 되긴 해야하는데. 왜 안되는지 모르겠다.-->
+
+                </div>
+            <%}%>
+
+
+
+
+        </div>
+    </container>
+
+</body>
+</html>
