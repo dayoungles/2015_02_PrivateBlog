@@ -14,16 +14,21 @@ router.get('/login', function (req, res, next) {
 
 router.post('/loginProcess', function (req, res, next) {
 		sess = req.session;
-		var user = model.users.findOne({
+		model.users.find({}, function(err, data){
+			console.log("find all + "+ data);
+		});
+		model.users.findOne({
 			email: req.body.email
 		}, function (err, data) {
-
+			console.log("data is = " + data);
 			if (err) return handleError(err);
-			//if(data === null) {
-			//	res.cookie('userName', "ghost");
-			//	res.redirect('/index/1');
-			//	return;
-			//}
+
+			if(data === null) {
+				res.cookie('userName', "ghost");
+				res.redirect('/index/1');
+				return;
+			}
+
 			if (data.password === req.body.password){
 				sess.user =  data;
 				console.log(data);

@@ -15,16 +15,11 @@ router.get('/show/:id', function(req, res){
     sess = req.session;
     console.log(sess.user);
     var postId = req.params.id;
-    var userLevel = req.session.user ? req.session.user.auth: "3";
-    model.posts.findOne({'_id':postId}, function (err, data) {
-        var accessLevel = data.accessLevel;
-        if(accessLevel < userLevel){
-            res.redirect("/users/authFail");
-            return;
-        }
-        model.comments.find({post:postId}, function(err, comments){
+    //var userLevel = req.session.user ? req.session.user.auth: "3";
 
-            res.render('showPost', { title: 'Express', post: data, userName:sess.user.name, comments:comments});
+    model.posts.findOne({'_id':postId}, function (err, data) {
+        model.comments.find({post:postId}, function(err, comments){
+            res.render('showPost', { post: data, userName:sess.user.name, comments:comments});
         });
 
 
@@ -74,7 +69,7 @@ router.get('/write', function(req, res){
 router.post('/send', function(req, res){
     req.body.date = new Date().toISOString();
     req.body.user = req.cookies.user;
-
+    console.log('req body: '+req.body);
 
     var arrTag = splitTag(req.body.tag);
     req.body.tag = arrTag;
@@ -84,7 +79,6 @@ router.post('/send', function(req, res){
 
     post.save(function (err, data) {
         if (err) return handleError(err);
-
         res.redirect('/index/1');
     });
 });
@@ -92,14 +86,16 @@ router.post('/send', function(req, res){
 var splitTag = function(tagString){
     var list;
 
-    if(tagString.indexOf(",") != -1){
-        list = tagString.split(",");
+    if(tagString.indexOf(",") == -1){
+        list = [];
+        return list;
     }
 
-    for(var i=0; i< list.length; i++){
+    list = tagString.split(",");
+    for(var i = 0; i< list.length; i++){
         list[i]= list[i].replace("#", "");
     }
-    console.log(list);
+    console.log("tag parsed: " + list);
     return list;
 };
 

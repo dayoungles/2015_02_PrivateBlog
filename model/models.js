@@ -12,7 +12,7 @@ exports.users= mongoose.model('users', users);
 var posts = new Schema({
 	//user:{type: Schema.ObjectId, ref: 'users'},
 	userName: String,
-	accessLevel: String,
+	accessLevel: Number,
 	date:Date,
 	title:String,
 	content:String,
