@@ -20,7 +20,7 @@ router.get('/:page', function (req, res, next) {
     model.posts.find({accessLevel: { $gte : req.session.auth}}, function (err, data) {
     //model.posts.find(function (err, data) {
         res.render('index1', {title: 'Express', posts: data, userName: userName});
-        console.log("who : "+ data.accessLevel);
+        console.log(data.accessLevel);
     }).sort({_id: -1}).limit(10);
     //(pageNum-1)*5 ~ pageNum*5 선택하도록. post 넘버를 안 매겨서 아직 못함.
 });

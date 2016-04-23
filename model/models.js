@@ -5,7 +5,7 @@ var users = new Schema ({
 	email:String,
 	name: String,
 	password: String,
-	auth: String
+	auth: Number
 });
 exports.users= mongoose.model('users', users);
 
