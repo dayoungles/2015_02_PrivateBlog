@@ -17,8 +17,8 @@ router.get('/:page', function (req, res, next) {
         userName = sess.user.name;
     }
     console.log("auth : "+ req.session.user.auth);
-    //model.posts.find({accessLevel: { $gte : req.session.auth}}, function (err, data) {
-    model.posts.find(function (err, data) {
+    model.posts.find({accessLevel: { $gte : req.session.auth}}, function (err, data) {
+    //model.posts.find(function (err, data) {
         res.render('index1', {title: 'Express', posts: data, userName: userName});
         console.log("who : "+ data.accessLevel);
     }).sort({_id: -1}).limit(10);
