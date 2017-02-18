@@ -1,0 +1,50 @@
+div.container {
+    width:80%;
+    margin: 0px auto;
+    position: relative;
+    background-color: #e3e3e3;
+}
+div.title{
+    width:80%;
+}
+div.writer{
+    float:right;
+}
+img.title {
+    width:80%;
+    height:350px;
+    margin:10px;
+}
+div.left {
+    float:left;
+}
+div.right{
+    float:right;
+}
+
+div.showList {
+    border: 1px solid black;
+    margin: 10px;
+}
+div.post{
+    border-bottom: 1px solid black;
+    padding:5px;
+}
+div.page{
+    width:80%;
+}
+div.pagePointer{
+
+}
+
+div.pBox{
+    /*margin:0px auto;*/
+}
+p{
+    font-size:50px;
+    font-style: bold;;
+}
+
+input.search{
+    width: 200px;
+}

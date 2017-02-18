@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var session = require('express-session');
 
+var router = express.Router();
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var post= require('./routes/post');
@@ -34,7 +35,7 @@ app.use(session(
 app.use('/index', routes);
 app.use('/users', users);
 app.use('/post', post);
-
+app.use('/', router);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
@@ -66,11 +67,19 @@ app.use(function(err, req, res, next) {
   });
 });
 
+
+
 mongoose.connect(url);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function (callback) {
   console.log("mongoose connected completed");
 });
+
+router.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname + '/public/login.html'));
+});
+
+module.exports = router;
 module.exports = db;
 module.exports = app;
