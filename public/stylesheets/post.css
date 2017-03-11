@@ -1,0 +1,47 @@
+
+div.contents{
+    background-color: #e3e3e3;
+    width:80%;
+    padding:40px;
+}
+div.content{
+    border-bottom: 1px solid grey;
+}
+div.titleBox{
+    position:relative;
+    width:100%;
+
+    border-bottom: 1px solid gray;
+}
+div.titleBox p.title{
+    font-size:20px;
+    margin:10px;
+}
+div.titleBox p.date {
+    float: right;
+    margin: 10px;
+}
+p.written {
+    font-size:15px;
+
+}
+span.tag{
+    font-size:15px;
+    color:dimgrey;
+
+}
+div.comment {
+    font-size:15px;
+    border: 1px solid gray;
+    height:50px;
+    margin:10px 0px;
+    padding:10px;
+}
+div.comments{
+
+}
+
+button {
+    float: right;
+
+}

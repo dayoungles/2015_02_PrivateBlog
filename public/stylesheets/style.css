@@ -1,8 +1,11 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px BatangChe, "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #f9f9f9;
 }
 
 a {
-  color: #00B7FF;
+  color:dimgray;
+  text-decoration: none;
 }
+

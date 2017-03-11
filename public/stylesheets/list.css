@@ -1,0 +1,51 @@
+div.container {
+    width: 80%;
+}
+
+div.headline {
+    height: 15%;
+    border: 10px outset darkgray;
+}
+
+div.showList {
+    margin-top: 2.5%;
+    border-top: 0.5px solid gray;
+}
+
+p.title {
+    padding:1%;
+}
+p.writer{
+    padding:1%;
+}
+
+div.post{
+    border-bottom: 0.5px solid gray;
+    height:50px;
+    padding:5px;
+    position:relative;
+    clear: both;
+}
+
+div.pagination{
+    text-align:center;
+    padding:0;
+}
+
+div.pBox{
+    /*margin:0px auto;*/
+}
+
+input.search {
+    width:100%;
+    border-radius: 10px;
+
+}
+
+input.search:focus {
+    outline-width: 0;
+}
+
+div.searchTab {
+    margin: 1% 0px;
+}
