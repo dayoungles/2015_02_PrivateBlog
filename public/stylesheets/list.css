@@ -4,31 +4,19 @@ div.container {
 
 div.headline {
     height: 15%;
-    border: 1px solid black;
+    border: 10px outset darkgray;
 }
 
 div.showList {
     margin-top: 2.5%;
+    border-top: 0.5px solid gray;
 }
 
 p.title {
-    margin:1%;
-    width:70%;
-    display: inline-block;
-    float: left;
+    padding:1%;
 }
 p.writer{
-    margin:1%;
-    width:20%;
-    display: inline-block;
-    float: right;
-}
-
-div.left {
-    float:left;
-}
-div.right{
-    float:right;
+    padding:1%;
 }
 
 div.post{
@@ -38,19 +26,26 @@ div.post{
     position:relative;
     clear: both;
 }
-div.page{
-    width:80%;
-}
-div.pagePointer{
 
+div.pagination{
+    text-align:center;
+    padding:0;
 }
 
 div.pBox{
     /*margin:0px auto;*/
 }
-p{
+
+input.search {
+    width:100%;
+    border-radius: 10px;
+
 }
 
-input.search{
-    width: 200px;
+input.search:focus {
+    outline-width: 0;
+}
+
+div.searchTab {
+    margin: 1% 0px;
 }

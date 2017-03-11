@@ -10,41 +10,39 @@
 </head>
 <body>
     <div class="container">
-        <div class="headline">
+        <div class="headline row">
             <h2><center>hello i am going to create new one </center></h2><br/>
         </div>
 
             <!-- TODO id를 조만간 no로 바꿀 것 -->
-        <div class="showList">
+        <div class="showList row">
             <% for(var i=0; i<posts.length; i++) {%>
-            <div class="post" postId=<%=posts[i]._id%>>
+            <div class="post col-lg-12" postId=<%=posts[i]._id%>>
                 <a href="/post/show/<%=posts[i]._id%>">
                     <!--<div class="postNum">-->
                         <!--<%= posts[i].no%>-->
                     <!--</div>-->
-                    <p class="title"><%= posts[i].title%></p>
-                    <p class="writer">WRITER<%= posts[i].user%></p>
+                    <p class="title col-lg-10"><%= posts[i].title%></p>
+                    <p class="writer col-lg-2">WRITER<%= posts[i].user%></p>
                 </a>
             </div>
             <% } %>
 
         </div>
-        <div class="searchTab">
-            <input type="text" placeholder="search tag" class="search" />
-        </div>
-        <div class="write"><%=userName%></div>
-
-        <div class="page">
-            <div class="left pagePointer">
-                <div class="pBox">
-                    <p class="arrow"><</p>
-                </div>
+        <div class="row">
+            <div class="searchTab col-lg-2">
+                <input type="text" placeholder="search" class="search" />
             </div>
-
-            <div class="right pagePointer">
-                <div class="pBox">
-                    <p class="arrow">></p>
-                </div>
+        </div>
+        <div class="row">
+            <div class="pagination col-lg-12">
+                <ul class="pagination">
+                    <li><a href="#" class="arrow"><</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">></a></li>
+                </ul>
             </div>
         </div>
     </div>
