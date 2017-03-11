@@ -7,42 +7,21 @@ var sess;
 var url = 'mongodb://localhost:27017/blog';
 
 /* GET home page. */
-//<<<<<<< HEAD
-//router.get('/:page', function (req, res, next) {
-//    var pageNum = req.params.page;
-//    sess = req.session;
-//    var userName;
-//    if (sess.ghost) {
-//        userName = "notMem";
-//    } else {
-//        userName = sess.user.name;
-//    }
-//    console.log("auth : "+ req.session.user.auth);
-//    model.posts.find({accessLevel: { $gte : req.session.auth}}, function (err, data) {
-//    //model.posts.find(function (err, data) {
-//        res.render('index1', {title: 'Express', posts: data, userName: userName});
-//        console.log(data.accessLevel);
-//    }).sort({_id: -1}).limit(10);
-    //(pageNum-1)*5 ~ pageNum*5 선택하도록. post 넘버를 안 매겨서 아직 못함.
-//=======
 router.get('/:page', function(req, res, next) {
-	var pageNum = req.params.page;
-	sess = req.session;
-	var userName;
-	if(sess.ghost){
-		userName = "notMem";
-	}else {
-		userName = sess.user.name;
-	}
+    var pageNum = req.params.page;
+    sess = req.session;
+    var userName;
+    if(sess.ghost){
+        userName = "notMem";
+    }else {
+        userName = sess.user.name;
+    }
 
-	model.posts.find({}, function (err, data) {
-		res.render('index1', { title: 'Express', posts: data, userName:userName});
-	}).sort({_id:-1}).limit(10);
-	//(pageNum-1)*5 ~ pageNum*5 선택하도록. post 넘버를 안 매겨서 아직 못함.
-//>>>>>>> d8d2b4a
+    model.posts.find({}, function (err, data) {
+        res.render('index1', { title: 'Express', posts: data, userName:userName});
+    }).sort({_id:-1}).limit(10);
+    //(pageNum-1)*5 ~ pageNum*5 선택하도록. post 넘버를 안 매겨서 아직 못함.
 });
-
-
 module.exports = router;
 
 
